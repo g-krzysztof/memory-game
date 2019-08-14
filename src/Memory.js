@@ -56,7 +56,6 @@ class Memory extends Component {
             } else if (buttons.length === 2 && buttons[0].name === buttons[1].name) {
                 if (buttons[0].id !== buttons[1].id) {
                     let buttons = [...this.state.buttons];
-                    // buttons = buttons.map(button => button.clicked === true ? { id: button.id, name: button.name, clicked: false, disabled: true } : button)
                     buttons.forEach(button => { if (button.clicked === true) { button.disabled = true; button.clicked = false } })
                     this.setState({
                         buttons,
@@ -71,7 +70,6 @@ class Memory extends Component {
     handleClick = e => {
         let buttons = [...this.state.buttons];
         if (this.state.step < 2) {
-            // buttons = buttons.map(button => parseInt(e.target.id, 10) === button.id ? { id: button.id, name: button.name, clicked: true, disabled: false } : button)
             buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
 
             this.setState({
