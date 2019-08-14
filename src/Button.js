@@ -8,6 +8,7 @@ const Button = (props) => {
             key={button.id}
             id={button.id}
             onClick={props.onClick}>
+            {button.clicked ? button.name : null}
         </button>)
     );
 }
