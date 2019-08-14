@@ -42,11 +42,12 @@ class Memory extends Component {
     handleClick = e => {
         let buttons = [...this.state.buttons];
         if (this.state.step < 2) {
-            buttons = buttons.map(button => parseInt(e.target.id, 10) === button.id ? { id: button.id, name: button.name, clicked: true, disabled: false } : button)
+            // buttons = buttons.map(button => parseInt(e.target.id, 10) === button.id ? { id: button.id, name: button.name, clicked: true, disabled: false } : button)
+            buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
+
             this.setState({
                 buttons,
                 step: this.state.step + 1
-
             })
         }
     }
