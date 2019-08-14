@@ -1,0 +1,11 @@
+.memory {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 64vh;
+  margin: 30px auto 0 auto;
+  &__btn {
+    width: 14vh;
+    height: 14vh;
+    margin: 1vh;
+  }
+}
