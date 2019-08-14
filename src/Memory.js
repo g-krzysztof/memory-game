@@ -26,7 +26,7 @@ class Memory extends Component {
     render() {
         return (
             <div className="memory">
-                <Button />
+                <Button buttons={this.state.buttons} />
             </div>
         );
     }

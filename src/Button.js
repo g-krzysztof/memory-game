@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Button = () => {
+const Button = (props) => {
+    const buttons = props.buttons;
     return (
-        <button className="memory__btn"></button>
+        buttons.map(button => <button key={button.id} className="memory__btn"></button>)
     );
 }
 
