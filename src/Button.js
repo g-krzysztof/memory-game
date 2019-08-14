@@ -7,7 +7,8 @@ const Button = (props) => {
             className="memory__btn"
             key={button.id}
             id={button.id}
-            onClick={props.onClick}>
+            onClick={props.onClick}
+            disabled={button.disabled}>
             {button.clicked ? button.name : null}
         </button>)
     );
