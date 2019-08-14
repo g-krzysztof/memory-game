@@ -22,7 +22,8 @@ class Memory extends Component {
             { id: 14, name: 'H', clicked: false, disabled: false },
             { id: 15, name: 'H', clicked: false, disabled: false },
         ],
-        step: 0
+        step: 0,
+        count: 0
     }
 
     compareNumbers = () => {
@@ -37,6 +38,34 @@ class Memory extends Component {
         this.setState({
             buttons
         })
+    }
+
+    componentDidUpdate() {
+        let buttons = [...this.state.buttons];
+        buttons = buttons.filter(button => button.clicked === true ? button : null)
+
+        setTimeout(() => {
+            if (buttons.length === 2 && buttons[0].name !== buttons[1].name) {
+                let buttons = [...this.state.buttons];
+                buttons.forEach(button => { if (button.clicked === true) { button.clicked = false; } })
+                this.setState({
+                    buttons,
+                    count: this.state.count + 1,
+                    step: 0
+                })
+            } else if (buttons.length === 2 && buttons[0].name === buttons[1].name) {
+                if (buttons[0].id !== buttons[1].id) {
+                    let buttons = [...this.state.buttons];
+                    // buttons = buttons.map(button => button.clicked === true ? { id: button.id, name: button.name, clicked: false, disabled: true } : button)
+                    buttons.forEach(button => { if (button.clicked === true) { button.disabled = true; button.clicked = false } })
+                    this.setState({
+                        buttons,
+                        count: this.state.count + 1,
+                        step: 0
+                    })
+                }
+            }
+        }, 1000);
     }
 
     handleClick = e => {
