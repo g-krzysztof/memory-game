@@ -22,11 +22,25 @@ class Memory extends Component {
             { id: 14, name: 'H', clicked: false, disabled: false },
             { id: 15, name: 'H', clicked: false, disabled: false },
         ],
+        step: 0
     }
+
+    handleClick = e => {
+        let buttons = [...this.state.buttons];
+        if (this.state.step < 2) {
+            buttons = buttons.map(button => parseInt(e.target.id, 10) === button.id ? { id: button.id, name: button.name, clicked: true, disabled: false } : button)
+            this.setState({
+                buttons,
+                step: this.state.step + 1
+
+            })
+        }
+    }
+
     render() {
         return (
             <div className="memory">
-                <Button buttons={this.state.buttons} />
+                <Button buttons={this.state.buttons} onClick={this.handleClick} />
             </div>
         );
     }
