@@ -25,6 +25,20 @@ class Memory extends Component {
         step: 0
     }
 
+    compareNumbers = () => {
+        let a = Math.random() - 0.5;
+        let b = Math.random() - 0.5;
+        return a - b
+    }
+
+    componentDidMount() {
+        let buttons = [...this.state.buttons];
+        buttons = buttons.sort(this.compareNumbers);
+        this.setState({
+            buttons
+        })
+    }
+
     handleClick = e => {
         let buttons = [...this.state.buttons];
         if (this.state.step < 2) {
