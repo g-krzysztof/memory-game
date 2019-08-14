@@ -12,5 +12,12 @@
   width: 14vh;
   height: 14vh;
   margin: 1vh;
+  font-size: 4vh;
+  font-weight: bold;
+}
+
+.memory__btn--disabled {
+  background-color: aquamarine;
+  border: 1px solid grey;
 }
 /*# sourceMappingURL=App.css.map */
