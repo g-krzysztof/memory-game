@@ -3,6 +3,8 @@ import './css/App.css';
 import Button from './Button';
 
 class Memory extends Component {
+    click1 = ""
+    click2 = ""
     state = {
         buttons: [
             { id: 0, name: 'A', clicked: false, disabled: false },
@@ -72,20 +74,22 @@ class Memory extends Component {
     // show button name on click [max 2 buttons at same time]
     handleClick = e => {
         let buttons = [...this.state.buttons];
-        if (this.state.step < 2) {
+
+        if (this.state.step === 0) {
+            this.click1 = e.target.id;
+        }
+
+        if (this.state.step === 1) {
+            this.click2 = e.target.id;
+        }
+
+        if (this.click1 !== this.click2 && this.state.step < 2) {
             buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
 
             this.setState({
-                buttons
+                buttons,
+                step: this.state.step + 1
             })
-            let clickedButtons = buttons.filter(button => button.clicked === true);
-
-            // prevent from clicked two times the same button
-            if (clickedButtons.length !== 1) {
-                this.setState({
-                    step: this.state.step + 1
-                })
-            }
         }
     }
 
