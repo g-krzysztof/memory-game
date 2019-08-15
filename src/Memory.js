@@ -92,6 +92,7 @@ class Memory extends Component {
             <div className="memory">
                 <Button buttons={this.state.buttons} onClick={this.handleClick} />
                 <div className="memory__text">Liczba prób: {this.state.count}</div>
+                <button className="memory__restart-btn">Zagraj od nowa</button>
             </div>
         );
     }
