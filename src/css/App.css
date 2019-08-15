@@ -22,5 +22,14 @@
 .memory__btn--disabled {
   background-color: aquamarine;
   border: 1px solid grey;
+  cursor: default;
+}
+
+.memory__text {
+  width: 100%;
+  margin: 3vh auto;
+  text-align: center;
+  font-size: 5vh;
+  font-weight: bold;
 }
 /*# sourceMappingURL=App.css.map */
