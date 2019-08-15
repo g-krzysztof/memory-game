@@ -32,6 +32,7 @@ class Memory extends Component {
         return a - b
     }
 
+    // mixing the table with buttons
     componentDidMount() {
         let buttons = [...this.state.buttons];
         buttons = buttons.sort(this.compareNumbers);
@@ -40,6 +41,7 @@ class Memory extends Component {
         })
     }
 
+    // checking if two buttons have been clicked and checking if there is a match
     componentDidUpdate() {
         let buttons = [...this.state.buttons];
         buttons = buttons.filter(button => button.clicked === true ? button : null)
@@ -67,6 +69,7 @@ class Memory extends Component {
         }, 1000);
     }
 
+    // show button name on click [max 2 buttons at same time]
     handleClick = e => {
         let buttons = [...this.state.buttons];
         if (this.state.step < 2) {
@@ -78,7 +81,6 @@ class Memory extends Component {
             let clickedButtons = buttons.filter(button => button.clicked === true);
 
             // prevent from clicked two times the same button
-
             if (clickedButtons.length !== 1) {
                 this.setState({
                     step: this.state.step + 1
@@ -87,6 +89,7 @@ class Memory extends Component {
         }
     }
 
+    // restart game and start again
     handleRestartButton = () => {
         let buttons = [...this.state.buttons];
         buttons.forEach(button => { if (button.disabled === true) { button.disabled = false; } })
