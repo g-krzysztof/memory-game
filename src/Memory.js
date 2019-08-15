@@ -87,12 +87,24 @@ class Memory extends Component {
         }
     }
 
+    handleRestartButton = () => {
+        let buttons = [...this.state.buttons];
+        buttons.forEach(button => { if (button.disabled === true) { button.disabled = false; } })
+        buttons.forEach(button => { if (button.clicked === true) { button.clicked = false; } })
+        buttons = buttons.sort(this.compareNumbers);
+        this.setState({
+            buttons,
+            count: 0,
+            step: 0
+        })
+    }
+
     render() {
         return (
             <div className="memory">
                 <Button buttons={this.state.buttons} onClick={this.handleClick} />
                 <div className="memory__text">Liczba prób: {this.state.count}</div>
-                <button className="memory__restart-btn">Zagraj od nowa</button>
+                <button onClick={this.handleRestartButton} className="memory__restart-btn">Zagraj od nowa</button>
             </div>
         );
     }
