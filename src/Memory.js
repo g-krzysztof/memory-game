@@ -5,6 +5,7 @@ import Button from './Button';
 class Memory extends Component {
     click1 = ""
     click2 = ""
+    click3 = ""
     state = {
         buttons: [
             { id: 0, name: 'A', clicked: false, disabled: false },
@@ -42,22 +43,24 @@ class Memory extends Component {
         buttons = buttons.filter(button => button.clicked === true ? button : null)
 
         setTimeout(() => {
-            if (buttons.length === 2 && buttons[0].name !== buttons[1].name) {
+            if (buttons.length === 3 && (buttons[0].name !== buttons[1].name || buttons[1].name !== buttons[2].name || buttons[0].name !== buttons[2].name)) {
                 let buttons = [...this.state.buttons];
                 buttons.forEach(button => { if (button.clicked === true) { button.clicked = false; } })
                 this.click1 = ""
                 this.click2 = ""
+                this.click3 = ""
                 this.setState({
                     buttons,
                     count: this.state.count + 1,
                     step: 0
                 })
-            } else if (buttons.length === 2 && buttons[0].name === buttons[1].name) {
-                if (buttons[0].id !== buttons[1].id) {
+            } else if (buttons.length === 3 && buttons[0].name === buttons[1].name && buttons[0].name === buttons[2].name) {
+                if (buttons[0].id !== buttons[1].id && buttons[0].id !== buttons[2].id) {
                     let buttons = [...this.state.buttons];
                     buttons.forEach(button => { if (button.clicked === true) { button.disabled = true; button.clicked = false } })
                     this.click1 = ""
                     this.click2 = ""
+                    this.click3 = ""
                     this.setState({
                         buttons,
                         count: this.state.count + 1,
@@ -80,9 +83,26 @@ class Memory extends Component {
             this.click2 = e.target.id;
         }
 
-        if (this.click1 !== this.click2 && this.state.step < 2) {
-            buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
+        if (this.state.step === 2) {
+            this.click3 = e.target.id;
+        }
 
+        if (this.state.step === 0 && this.click1 !== this.click2) {
+            buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
+            this.setState({
+                buttons,
+                step: this.state.step + 1
+            })
+        }
+        if (this.state.step === 1 && this.click1 !== this.click2 && this.click1 !== this.click3) {
+            buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
+            this.setState({
+                buttons,
+                step: this.state.step + 1
+            })
+        }
+        if (this.state.step === 2 && this.click1 !== this.click2 && this.click1 !== this.click3 && this.click2 !== this.click3) {
+            buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
             this.setState({
                 buttons,
                 step: this.state.step + 1
