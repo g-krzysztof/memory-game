@@ -80,7 +80,7 @@ class Memory extends Component {
         }, 1000);
     }
 
-    // show button name on click [max 2 buttons at same time]
+    // show button name on click [max 3 buttons at same time]
     handleClick = e => {
         let buttons = [...this.state.buttons];
 
