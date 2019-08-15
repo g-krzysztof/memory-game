@@ -4,11 +4,13 @@
   max-width: 64vh;
   margin: 30px auto 0 auto;
   &__btn {
+    cursor: pointer;
     width: 14vh;
     height: 14vh;
     margin: 1vh;
-    font-size: 4vh;
+    font-size: 6vh;
     font-weight: bold;
+    transition: .2s;
   }
   &__btn--disabled {
       background-color: aquamarine;

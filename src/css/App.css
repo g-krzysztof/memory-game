@@ -9,11 +9,14 @@
 }
 
 .memory__btn {
+  cursor: pointer;
   width: 14vh;
   height: 14vh;
   margin: 1vh;
-  font-size: 4vh;
+  font-size: 6vh;
   font-weight: bold;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 .memory__btn--disabled {

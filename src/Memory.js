@@ -73,9 +73,17 @@ class Memory extends Component {
             buttons.forEach(button => { if (parseInt(e.target.id, 10) === button.id) { button.clicked = true; } })
 
             this.setState({
-                buttons,
-                step: this.state.step + 1
+                buttons
             })
+            let clickedButtons = buttons.filter(button => button.clicked === true);
+
+            // prevent from clicked two times the same button
+
+            if (clickedButtons.length !== 1) {
+                this.setState({
+                    step: this.state.step + 1
+                })
+            }
         }
     }
 
