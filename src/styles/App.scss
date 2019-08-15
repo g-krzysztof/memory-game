@@ -1,12 +1,12 @@
 .memory {
   display: flex;
   flex-wrap: wrap;
-  max-width: 64vh;
+  max-width: 72vh;
   margin: 30px auto 0 auto;
   &__btn {
     cursor: pointer;
-    width: 14vh;
-    height: 14vh;
+    width: 10vh;
+    height: 10vh;
     margin: 1vh;
     font-size: 6vh;
     font-weight: bold;
@@ -27,7 +27,7 @@
   &__restart-btn {
     margin: 0 auto;
     padding: 1vh;
-    width: 62vh;
+    width: 50vh;
     font-size: 2vh;
     text-transform: uppercase;
     cursor: pointer;
