@@ -8,3 +8,6 @@ Try to find all pairs in as few attempts as possible.
 
 ### Online demo
 [https://g-krzysztof.github.io/memory-game/](https://g-krzysztof.github.io/memory-game/)
+
+### Online demo - version with triple match
+[http://krzysztofg.pl/memory-triple-match/](http://krzysztofg.pl/memory-triple-match/)
